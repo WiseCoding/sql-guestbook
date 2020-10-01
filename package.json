@@ -1,0 +1,28 @@
+{
+  "name": "php-guestbook",
+  "version": "1.0.0",
+  "description": "<p>   <img alt=\"Version\" src=\"https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000\" />   <a href=\"https://github.com/WiseCoding/php-guestbook/blob/master/LICENSE\" target=\"_blank\">     <img alt=\"License: MIT\" src=\"https://img.shields.io/github/license/WiseCoding/php-guestbook\" />   </a> </p>",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "postcss tailwind.css -o css/index.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WiseCoding/php-guestbook.git"
+  },
+  "keywords": [],
+  "author": "“Mattias",
+  "license": "“MIT”",
+  "bugs": {
+    "url": "https://github.com/WiseCoding/php-guestbook/issues"
+  },
+  "homepage": "https://github.com/WiseCoding/php-guestbook#readme",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.2.0",
+    "@tailwindcss/ui": "^0.6.2",
+    "autoprefixer": "^9.8.6",
+    "postcss-cli": "^8.0.0",
+    "postcss-import": "^12.0.1",
+    "tailwindcss": "^1.8.10"
+  }
+}

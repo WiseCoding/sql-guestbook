@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Placeholder Title!",
+        "content": "Placeholder content content content content content content content content content content",
+        "author": "Mr. Placeholder",
+        "date": "20\/05\/2020"
+    },
+    {
+        "title": "Smileys allowed \ud83d\ude00!",
+        "content": "These are all converted upon use -> :-), :), ;-), ;), :-(, :(, :'-(, :'(, :-D, :D, :-p, :p ",
+        "author": "Smiley Face",
+        "date": "21\/05\/2020"
+    },
+    {
+        "title": "No profanity please \u2764\ufe0f!",
+        "content": "There are a lot of banned words! It's important to keep it civilized. The use of the word 'becode' is also banned!",
+        "author": "Profanity Police",
+        "date": "22\/05\/2020"
+    },
+    {
+        "title": "Adjustable Posts.",
+        "content": "You can chose how much posts that you want to see by using the dropdown menu. ",
+        "author": "Frequent Poster",
+        "date": "23\/09\/2020"
+    },
+    {
+        "title": "This is a profane free post",
+        "content": "Wtf is this **** here. ****ing *** ****s here. You can all **** and ***hole.",
+        "author": "Mr. Profane",
+        "date": "25\/09\/2020"
+    },
+    {
+        "title": "We love \u2764\ufe0f",
+        "content": "Why did you censor the word be code? \u2764\ufe0f is censored indeed...",
+        "author": "BeCode",
+        "date": "26\/09\/2020"
+    }
+]
