@@ -1,1 +1,1 @@
-<header class="py-5 text-5xl font-black text-gray-800">PHP INN</header>
+<header class="py-5 text-5xl font-black text-gray-800">SQL INN</header>
