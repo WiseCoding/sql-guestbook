@@ -5,6 +5,7 @@ declare(strict_types=1);
 class savePosts
 {
   private $post = array();
+  private $title, $content, $author, $date;
 
   public function __construct()
   {
@@ -16,13 +17,11 @@ class savePosts
     $_POST['title'] = $this->filterProfanity($_POST['title']);
     $_POST['content'] = $this->filterProfanity($_POST['content']);
 
-    // compose entry message
-    $this->post = array(
-      'title' => htmlspecialchars($_POST['title']),
-      'content' => htmlspecialchars($_POST['content']),
-      'author' => htmlspecialchars($_POST['author']),
-      'date' => htmlspecialchars($_POST['date']),
-    );
+    // save data
+    $this->title = htmlspecialchars($_POST['title']);
+    $this->content = htmlspecialchars($_POST['content']);
+    $this->author = htmlspecialchars($_POST['author']);
+    $this->date = htmlspecialchars($_POST['date']);
   }
 
   public function getPost()
@@ -32,22 +31,13 @@ class savePosts
 
   public function storePost()
   {
-    try {
-      // Saving location entries
-      $path = "./data/entries.json";
-      // Get previous entries
-      $entries = file_get_contents($path);
-      $entries = json_decode($entries, true);
-      // Add new entry
-      $entries[] = $this->post;
-      // Encode entries
-      $entries = json_encode($entries, JSON_PRETTY_PRINT);
-      // Save entries
-      file_put_contents($path, $entries);
-      return "Entry saved";
-    } catch (\Throwable $th) {
-      return 'Error: ' .  $th . "<br />";
-    }
+    // Prepare safe statements
+    $sql = "INSERT INTO posts(title, content, author, date) VALUES (:title, :content, :author, :date)";
+    $prep = ['title' => $this->title, 'content' => $this->content, 'author' => $this->author, 'date' => $this->date];
+
+    // Add data to DB
+    $pdo = $this->openConnection();
+    $pdo->prepare($sql)->execute($prep);
   }
 
   public function addEmojis($input): string
@@ -72,5 +62,25 @@ class savePosts
     }
 
     return $input;
+  }
+
+  public function openConnection(): PDO
+  {
+    // DB Login Info
+    $dbhost    = "localhost";
+    $dbuser    = "root";
+    $dbpass    = "rootingforyou";
+    $db        = "php_guestbook";
+
+    // Options
+    $driverOptions = [
+      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ];
+
+    // Instantiate & return
+    $pdo = new PDO('mysql:host=' . $dbhost . ';dbname=' . $db, $dbuser, $dbpass, $driverOptions);
+    return $pdo;
   }
 }

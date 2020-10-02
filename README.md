@@ -48,7 +48,7 @@
 - [Markdown](https://www.markdownguide.org/)
 - [Tailwind](https://tailwindcss.com/)
 - [PHP](https://www.php.net/)
-- [mySQL](https://www.mysql.com/)
+- [MariaDB](https://mariadb.org/)
 
 # License 📎
 

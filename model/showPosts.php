@@ -8,21 +8,11 @@ class showPosts
 
   public function __construct()
   {
-    $this->posts = $this->openPosts();
+    $this->posts = $this->getPosts();
   }
 
-  public function openPosts()
+  public function getPosts()
   {
-    try {
-      // Posts location
-      $path = "./data/entries.json";
-      // Get entries
-      $entries = file_get_contents($path);
-      // Decode entries
-      return json_decode($entries, true);
-    } catch (\Throwable $th) {
-      return 'Error: ' .  $th . "<br />";
-    }
   }
 
   public function printPosts($amount)
@@ -46,5 +36,25 @@ class showPosts
       echo  '</div>';
       echo '</div>';
     }
+  }
+
+  public function openConnection(): PDO
+  {
+    // DB Login Info
+    $dbhost    = "localhost";
+    $dbuser    = "root";
+    $dbpass    = "rootingforyou";
+    $db        = "php_guestbook";
+
+    // Options
+    $driverOptions = [
+      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ];
+
+    // Instantiate & return
+    $pdo = new PDO('mysql:host=' . $dbhost . ';dbname=' . $db, $dbuser, $dbpass, $driverOptions);
+    return $pdo;
   }
 }

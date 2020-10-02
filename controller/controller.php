@@ -18,6 +18,7 @@ if (isset($_POST['submit']) && $_POST['submit'] === 'submit') {
 
   // SAVE POST
   $post->storePost();
+  // $post->printPosts();
 }
 
 // GET & SHOW OLD POSTS
