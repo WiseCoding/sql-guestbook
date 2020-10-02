@@ -11,6 +11,28 @@
 
 ## 🏠 [Repo](https://github.com/WiseCoding/sql-guestbook#readme)
 
+## Local
+
+> Want to test the app locally?
+
+- Create a database called `php_guestbook` on your `localhost`.
+- Create the table `posts`...
+
+```sql
+CREATE TABLE posts(
+  id INT NOT NULL AUTO_INCREMENT,
+  title varchar(255) NOT NULL,
+  content varchar(10000) NOT NULL,
+  author varchar(50) NOT NULL,
+  date varchar(10) NOT NULL,
+  PRIMARY KEY(id)
+);
+```
+
+- `npm i` to install all npm dependencies.
+- `php composer.phar install` to install all composer dependencies.
+- All set 🥳.
+
 # Assignment 📝
 
 > **UPDATE**, now that we stored our entries in a file in the [previous exercise](https://github.com/WiseCoding/php-guestbook), let's connect and store the entries in a database instead.
