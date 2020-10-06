@@ -7,7 +7,7 @@
 
 # SQL Guest Book 📖
 
-## 🌐 [Live](https://sql-guestbook-mattias.herokuapp.com/)
+## 🌐 [Live](https://sql-guestbook.herokuapp.com/)
 
 ## 🏠 [Repo](https://github.com/WiseCoding/sql-guestbook#readme)
 

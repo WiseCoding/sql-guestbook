@@ -66,7 +66,19 @@ class savePosts
 
   public function openConnection(): PDO
   {
-    // DB Login Info
+    $db = parse_url(getenv("https://data.heroku.com/datastores/143a802a-fb86-4c11-a6af-b2223ba2747f#administration    postgres://eiyngzmixlorqx:462af116bd57e87e53e6671a05d8955c5b65b79db70e9247d3ce03a7fcbfb2ea@ec2-54-155-22-153.eu-west-1.compute.amazonaws.com:5432/de7j952d2j8cmk"));
+
+    $pdo = new PDO("pgsql:" . sprintf(
+      "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+      $db["ec2-54-155-22-153.eu-west-1.compute.amazonaws.com"],
+      $db["5432"],
+      $db["eiyngzmixlorqx"],
+      $db["462af116bd57e87e53e6671a05d8955c5b65b79db70e9247d3ce03a7fcbfb2ea"],
+      ltrim($db["path"], "/")
+    ));
+    return $pdo;
+
+    /* // DB Login Info
     $dbhost    = "ec2-54-155-22-153.eu-west-1.compute.amazonaws.com";
     $dbuser    = "eiyngzmixlorqx";
     $dbpass    = "462af116bd57e87e53e6671a05d8955c5b65b79db70e9247d3ce03a7fcbfb2ea";
@@ -81,6 +93,6 @@ class savePosts
 
     // Instantiate & return
     $pdo = new PDO('mysql:host=' . $dbhost . ';dbname=' . $db, $dbuser, $dbpass, $driverOptions);
-    return $pdo;
+    return $pdo; */
   }
 }
