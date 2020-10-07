@@ -67,7 +67,7 @@ class savePosts
   public function openConnection(): PDO
   {
     try {
-      $db = parse_url(getenv("postgres://eiyngzmixlorqx:462af116bd57e87e53e6671a05d8955c5b65b79db70e9247d3ce03a7fcbfb2ea@ec2-54-155-22-153.eu-west-1.compute.amazonaws.com:5432/de7j952d2j8cmk"));
+      $db = parse_url(getenv("DATABASE_URL"));
 
       $pdo = new PDO("pgsql:" . sprintf(
         "host=%s;port=%s;user=%s;password=%s;dbname=%s",
@@ -78,7 +78,7 @@ class savePosts
         ltrim($db["path"], "/")
       ));
     } catch (\Throwable $th) {
-      var_dump($th);
+      echo 'Caught exception: ',  $th->getMessage(), "\n";
     }
     return $pdo;
 
