@@ -66,7 +66,7 @@ class savePosts
 
   public function openConnection(): PDO
   {
-    $db = parse_url(getenv("DATABASE_URL"));
+    $db = parse_url(getenv("postgresql-rugged-74301"));
 
     $pdo = new PDO("pgsql:" . sprintf(
       "host=%s;port=%s;user=%s;password=%s;dbname=%s",
@@ -79,10 +79,10 @@ class savePosts
     return $pdo;
 
     /* // DB Login Info
-    $dbhost    = "ec2-54-155-22-153.eu-west-1.compute.amazonaws.com";
-    $dbuser    = "eiyngzmixlorqx";
-    $dbpass    = "462af116bd57e87e53e6671a05d8955c5b65b79db70e9247d3ce03a7fcbfb2ea";
-    $db        = "de7j952d2j8cmk";
+    $dbhost    = "localhost";
+    $dbuser    = "root";
+    $dbpass    = "rootingforyou";
+    $db        = "php_guestbook";
 
     // Options
     $driverOptions = [
