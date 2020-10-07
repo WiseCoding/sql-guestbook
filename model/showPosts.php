@@ -40,22 +40,5 @@ class showPosts
       echo 'Caught exception: ',  $th->getMessage(), "\n";
     }
     return $pdo;
-
-    /* // DB Login Info
-    $dbhost    = "localhost";
-    $dbuser    = "root";
-    $dbpass    = "rootingforyou";
-    $db        = "php_guestbook";
-
-    // Options
-    $driverOptions = [
-      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'",
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ];
-
-    // Instantiate & return
-    $pdo = new PDO('mysql:host=' . $dbhost . ';dbname=' . $db, $dbuser, $dbpass, $driverOptions);
-    return $pdo; */
   }
 }
