@@ -7,7 +7,7 @@ use Snipe\BanBuilder\CensorWords;
 require 'vendor/autoload.php';
 $censor = new CensorWords();
 
-// FORM SUBMIT NEW ENTRY
+// FORM SUBMIT NEW / EDIT OLD ENTRY
 if (isset($_POST['submit']) && $_POST['submit'] === 'submit') {
 
   // FILTER PROFANITY
@@ -20,7 +20,7 @@ if (isset($_POST['submit']) && $_POST['submit'] === 'submit') {
   $post->storePost();
 }
 
-// GET & SHOW OLD POSTS
+// PRINT OLD POSTS
 $showPosts = new showPosts();
 
 // SHOW # AMOUNT OF POSTS
@@ -28,4 +28,9 @@ if (isset($_POST['reviews'])) {
   $seeAmount = (int)$_POST['reviews'];
 } else {
   $seeAmount = 10;
+}
+
+// DELETE A SPECIFIC POST
+if (isset($_POST['delete'])) {
+  $showPosts->deletePost((int)$_POST['delete']);
 }

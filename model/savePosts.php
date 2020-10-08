@@ -5,7 +5,7 @@ declare(strict_types=1);
 class savePosts
 {
   private $post = array();
-  private $title, $content, $author, $date;
+  private $title, $content, $author, $date, $id;
 
   public function __construct()
   {
@@ -22,6 +22,9 @@ class savePosts
     $this->content = htmlspecialchars($_POST['content']);
     $this->author = htmlspecialchars($_POST['author']);
     $this->date = htmlspecialchars($_POST['date']);
+    if (isset($_POST['id'])) {
+      $this->id = (int)htmlspecialchars($_POST['id']);
+    }
   }
 
   public function getPost()
@@ -32,10 +35,17 @@ class savePosts
   public function storePost()
   {
     // Prepare safe statements
-    $sql = "INSERT INTO posts(title, content, author, date) VALUES (:title, :content, :author, :date)";
-    $prep = ['title' => $this->title, 'content' => $this->content, 'author' => $this->author, 'date' => $this->date];
+    if (isset($_POST['id'])) {
+      // If post is edited, update data
+      $sql = "UPDATE posts SET title = :title, content = :content, author = :author, date = :date WHERE id = :id";
+      $prep = ['title' => $this->title, 'content' => $this->content, 'author' => $this->author, 'date' => $this->date, 'id' => $this->id];
+    } else {
+      // If post is new, store data
+      $sql = "INSERT INTO posts(title, content, author, date) VALUES (:title, :content, :author, :date)";
+      $prep = ['title' => $this->title, 'content' => $this->content, 'author' => $this->author, 'date' => $this->date];
+    }
 
-    // Add data to DB
+    // Query DB
     $pdo = $this->openConnection();
     $pdo->prepare($sql)->execute($prep);
   }
@@ -81,5 +91,18 @@ class savePosts
       echo 'Caught exception: ',  $th->getMessage(), "\n";
     }
     return $pdo;
+
+    // LOCAL DB CONNECTION
+    /* $dbhost    = "localhost";
+    $dbuser    = "root";
+    $dbpass    = "*****";
+    $db        = "php_guestbook";
+    $driverOptions = [
+      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8mb4'",
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ];
+    $pdo = new PDO('mysql:host=' . $dbhost . ';dbname=' . $db, $dbuser, $dbpass, $driverOptions);
+    return $pdo; */
   }
 }

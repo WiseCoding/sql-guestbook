@@ -14,7 +14,7 @@
 
 <body class="box-border bg-orange-100">
 
-  <div class="container mx-auto text-center">
+  <div class="container relative mx-auto text-center">
     <!-- HEADER -->
     <?php include 'header.php' ?>
     <!-- FORM -->
